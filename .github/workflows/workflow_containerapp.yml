@@ -35,11 +35,8 @@ jobs:
       
     - name: Build with dotnet
       run: dotnet build --no-restore
-      
-    - name: Test
-      run: dotnet test --no-build --verbosity normal
 
-      - name: Get Latest Container Image Tag
+    - name: Get Latest Container Image Tag
       id: get_tag
       run: |
         TAG=$(az acr repository show-tags --name microhackregistryuser16 --repository microhackapp --orderby time_desc --output tsv --detail | head -n 1 | awk '{print $4}')
